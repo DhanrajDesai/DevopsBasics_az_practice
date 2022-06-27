@@ -29,4 +29,14 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'war_fearture1'
     publishLocation: 'Container'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker Demo'
+    command: 'login'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker Demo'
+    repository: 'azure_cicd_practice'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
     
